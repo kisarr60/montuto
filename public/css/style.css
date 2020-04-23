@@ -1,0 +1,9 @@
+html
+{
+  background-color: #ccc;
+}
+tr, td, th, h6, h5
+{
+  margin: 0px;
+  padding: 0px;
+}
