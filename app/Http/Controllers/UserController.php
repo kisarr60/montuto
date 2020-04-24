@@ -24,7 +24,7 @@ class UserController extends Controller
            
             
             ->select('eleves.*')
-            ->where('classe', '=', $laclasse)
+            ->where('classe', '=', '3 MA')
             ->orderBy('eleves.last_name', 'ASC')
             ->get();
 

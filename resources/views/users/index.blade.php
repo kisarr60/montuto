@@ -26,6 +26,22 @@
                       </select>
                       <button type="submit" class="btn btn-info d-block">Voir la liste</button>
                  </form>
+                 <form method="GET" action="{{ url('users/report/download') }}">
+                    @csrf
+                        <input type="text" name="var" value="">    
+
+                      <select type="text" name="classe">
+                          <optgroup>
+                              <option value="3 MA">3A</option>
+                              <option value="2">3B</option>
+                              <option value="3">3C</option>
+                              <option value="4">3D</option>
+                              <option value="5">4A</option>
+                              <option value="6">4B</option>
+                          </optgroup>
+                      </select>
+                      <button type="submit" class="btn btn-info d-block">Télécharger</button>
+                 </form>
                    
                     
                 
@@ -51,8 +67,8 @@
                 </tr>
                 @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->prenoms }}</td>
-                    <td>{{ $user->nom }}</td>
+                    <td>{{ $user->first_name }}</td>
+                    <td>{{ $user->last_name }}</td>
                 </tr>
                 @endforeach
             </table>

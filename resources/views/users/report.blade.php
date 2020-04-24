@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -49,7 +49,7 @@
     <h1 style="padding-top: 30px; text-align: center ">Certificat de scolarité</h1>
 
     <!-- {!! $laclasse !!} -->
-    <p>Je soussigné,<b> {{ $parametres->cetab }}</b> principal du {{ $parametres->etablissement }}, atteste que l'élève : </p>
+    <p>Je soussigné<b> {{ $parametres->cetab }}</b>, principal du {{ $parametres->etablissement }}, atteste que l'élève : </p>
     
     <hr>
                 @foreach ($users as $user)
@@ -91,6 +91,7 @@
 <div class="clearfix">
   <div class="box" style="background-color:#fff">
   <p>Fait à Bignona le <?php echo date('d-m-Y'); ?></p>
+ <img style="width: 100%" src="/home/ahoune/montuto/storage/app/public/images/ibou.png" alt="123">
   </div>
   <div class="box" style="background-color:#fff; text-align: center; margin-left: 50px;">
   <p>Le Principal</p><br>
