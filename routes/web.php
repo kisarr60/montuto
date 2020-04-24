@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/sarr', 'RandomController@sarr');
+
 Route::get('/envato-user-helper-demo', function () {
     return EnvatoUser::get_username(2);
 });
