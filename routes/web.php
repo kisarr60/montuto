@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/import_excel', 'ImportExcelController@index');
+Route::post('/import_excel/import', 'ImportExcelController@import');
+
 Route::get('/sarr', 'RandomController@sarr');
 
 Route::get('/envato-user-helper-demo', function () {
@@ -40,6 +43,7 @@ Route::get('qrcode', function () {
 Route::get('/eleves', 'ElevesController@index');
 Route::get('/eleves/create', 'ElevesController@create');
 Route::get('/eleves/{id}', 'ElevesController@show');
+Route::post('eleves/certif', 'ElevesController@certif');
 
 Auth::routes();
 

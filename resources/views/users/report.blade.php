@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Laravel 7/6 CRUD Example</title>
+  <title>Certificat de scolarité |{{ $user->first_name }} {{ $user->last_name }}</title>
   <link href="{{ base_path('public/css/style.css') }}" rel="stylesheet" type="text/css" />
   
 
@@ -52,7 +52,7 @@
     <p>Je soussigné<b> {{ $parametres->cetab }}</b>, principal du {{ $parametres->etablissement }}, atteste que l'élève : </p>
     
     <hr>
-                @foreach ($users as $user)
+                
                 
                 <table style="width: 90%; text-align: left; padding-left: 10%;">
                 <tr>
@@ -80,7 +80,7 @@
                     <td>{{ $user->classe }}</td>
                 </tr>
               
-                @endforeach
+              
 
             </table>
             <hr>
@@ -91,7 +91,7 @@
 <div class="clearfix">
   <div class="box" style="background-color:#fff">
   <p>Fait à Bignona le <?php echo date('d-m-Y'); ?></p>
- <img style="width: 100%" src="/home/ahoune/montuto/storage/app/public/images/ibou.png" alt="123">
+ <img style="width: 60%" src="{{ public_path('/images/ibousarr.png')}}" alt="123">
   </div>
   <div class="box" style="background-color:#fff; text-align: center; margin-left: 50px;">
   <p>Le Principal</p><br>

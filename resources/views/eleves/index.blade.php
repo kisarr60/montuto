@@ -10,17 +10,19 @@
 				<th>Nom</th>
 				<th>Matricule</th>
 				<th>Classe</th>
+				<th>Action</th>
 			</tr>
 			@foreach($eleves as $eleve)
 				<tr>
-					<td><a class="btn btn-info" href="/eleves/{{$eleve->id}}">{{ $eleve->id }}</a></td>
-					<td>{{ $eleve->student_prenom }}</td>
-					<td>{{ $eleve->student_name }}</td>
-					<td>{{ $eleve->student_matricule }}</td>
-					<td>{{ $eleve->libclasse }}</td>
+					<td>{{ $eleve->id }}</td>
+					<td>{{ $eleve->first_name }}</td>
+					<td>{{ $eleve->last_name }}</td>
+					<td>{{ $eleve->assurance }}</td>
+					<td>{{ $eleve->classe }}</td>
+					<td><a class="btn btn-info" href="/eleves/{{$eleve->id}}">Voir</a></td>
 				</tr>
 			@endforeach
 		</table>
-		<div></div>
+		<div> {{$eleves->links()}} </div>
 	</div>
 @endsection

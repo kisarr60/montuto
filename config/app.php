@@ -179,6 +179,7 @@ return [
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         App\Providers\EnvatoServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -234,6 +235,7 @@ return [
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'EnvatoUser' => App\Helpers\Envato\User::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

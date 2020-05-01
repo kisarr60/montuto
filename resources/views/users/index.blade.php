@@ -12,32 +12,32 @@
                  <hr>
                  <form method="GET" action="{{ url('users/report/view') }}">
                     @csrf
-                        <input type="text" name="var" value="">    
+                        <input type="text" name="var2" value="">    
 
-                      <select type="text" name="classe">
+                      <select type="text" name="classe2">
                           <optgroup>
-                              <option value="3 MA">3A</option>
-                              <option value="2">3B</option>
-                              <option value="3">3C</option>
-                              <option value="4">3D</option>
-                              <option value="5">4A</option>
-                              <option value="6">4B</option>
+                              <option value="3è MA">3A</option>
+                              <option value="3 MB">3B</option>
+                              <option value="3 MC">3C</option>
+                              <option value="3 MD">3D</option>
+                              <option value="4 MA">4A</option>
+                              <option value="4 MB">4B</option>
                           </optgroup>
                       </select>
                       <button type="submit" class="btn btn-info d-block">Voir la liste</button>
                  </form>
-                 <form method="GET" action="{{ url('users/report/download') }}">
+                 <form method="GET" action="{{ url('users/report/download') }}" target="__BLANK">
                     @csrf
                         <input type="text" name="var" value="">    
 
                       <select type="text" name="classe">
                           <optgroup>
                               <option value="3 MA">3A</option>
-                              <option value="2">3B</option>
-                              <option value="3">3C</option>
-                              <option value="4">3D</option>
-                              <option value="5">4A</option>
-                              <option value="6">4B</option>
+                              <option value="3 MB">3B</option>
+                              <option value="3 MC">3C</option>
+                              <option value="3 MD">3D</option>
+                              <option value="4 MA">4A</option>
+                              <option value="4 MB">4B</option>
                           </optgroup>
                       </select>
                       <button type="submit" class="btn btn-info d-block">Télécharger</button>

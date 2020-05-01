@@ -9,14 +9,23 @@
     			<h2>Certificat de scolarité</h2>
     		</div>
     		<div class="card-body">
-	      		<h4 class="card-title">John Doe</h4>
+
+	      		<div class="card-title">
+	      			<form action="{{ url('eleves/certif') }}" method="post" target="__BLANK">
+	      			@METHOD('post')
+    				@csrf
+    				<input type="hidden" name="classe" value=" {{$eleve->classe}} ">
+    				<input type="hidden" name="var" value=" {{$eleve->assurance}} ">
+    				<input type="submit" name="submit" value="Imprimer">
+    			</form>
+	      		</div>
 	      		<p class="card-text">
 	      			<div class="row">
 	      				<div class="col-3">
 	      					Prénoms et Nom :
 	      				</div>
 	      				<div class="col-9">
-	      					<strong>{{ $eleve->student_prenom }} {{$eleve->student_name}}</strong>
+	      					<strong>{{ $eleve->first_name }} {{$eleve->last_name}}</strong>
 	      				</div>
 	      			</div>
 	      			<div class="row">
@@ -24,7 +33,15 @@
 	      					Date de naissance :
 	      				</div>
 	      				<div class="col-9">
-	      					{{ $eleve->student_dob }}
+	      					{{changeDateFormate($eleve->datnais,'d-m-Y')}}
+	      				</div>
+	      			</div>
+	      			<div class="row">
+	      				<div class="col-3">
+	      					Lieu de naissance :
+	      				</div>
+	      				<div class="col-9">
+	      					{{ ucwords($eleve->lieunais) }}
 	      				</div>
 	      			</div>
 	      			<div class="row">
@@ -32,7 +49,15 @@
 	      					Matricule :
 	      				</div>
 	      				<div class="col-9">
-	      					{{ $eleve->student_matricule }}
+	      					{{ $eleve->assurance }}
+	      				</div>
+	      			</div>
+	      			<div class="row">
+	      				<div class="col-3">
+	      					Classe :
+	      				</div>
+	      				<div class="col-9">
+	      					{{ $eleve->classe }}
 	      				</div>
 	      			</div>
 	      		</p>

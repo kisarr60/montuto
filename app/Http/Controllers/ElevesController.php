@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Eleve;
+use App\Parametre;
 use Illuminate\Support\Facades\DB;
+
+
 
 class ElevesController extends Controller
 {
@@ -17,12 +20,9 @@ class ElevesController extends Controller
     {
 
         $eleves = DB::table('eleves')
-            ->join('classes', 'student_grade_id', '=', 'ClassePK')
-            
-            ->select('eleves.*', 'classes.libclasse')
-            ->where('classes.libclasse', '=', '3è A')
-            ->orderBy('eleves.student_name', 'ASC')
-            ->get();
+    
+            ->orderBy('eleves.id', 'ASC')
+            ->paginate(25);
 
 
         //$eleves = Eleve::orderBy('student_name', 'ASC')->paginate(20);
@@ -62,6 +62,27 @@ class ElevesController extends Controller
        $eleve = Eleve::findOrFail($id);
 
        return view('eleves.show', ['eleve'=>$eleve]);
+    }
+
+    public function certif(Request $request)
+    {
+
+        $parametres = Parametre::where('id', 1)->first();
+
+        $laclasse = $request['classe']; //$request['classe']
+        $matricule = $request['var'];
+     
+        $user = DB::table('eleves')
+            ->where('classe', '=', $laclasse)
+            ->where('assurance', '=', $matricule)
+            ->first();
+         $view = View('eleves.certif', ['user' => $user, 'parametres' => $parametres , 'laclasse' => $laclasse]);
+            $pdf = \App::make('dompdf.wrapper');
+            $pdf->loadHTML($view->render());
+            return $pdf->stream();
+        /*    $pdf = PDF::loadView('users.report', ['user' => $user, 'parametres' => $parametres, 'laclasse' => $laclasse]);
+            return $pdf->stream();*/
+        
     }
 
     /**

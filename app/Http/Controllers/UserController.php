@@ -18,13 +18,13 @@ class UserController extends Controller
 
         $parametres = Parametre::where('id', 1)->first();
 
-         $laclasse = $request['classe'];
+         $laclasse = $request['classe2'];
 
         $users = DB::table('eleves')
            
             
             ->select('eleves.*')
-            ->where('classe', '=', '3 MA')
+            ->where('classe', '=', $laclasse)
             ->orderBy('eleves.last_name', 'ASC')
             ->get();
 
@@ -41,18 +41,29 @@ class UserController extends Controller
 
         $laclasse = $request['classe']; //$request['classe']
         $matricule = $request['var'];
+        $laclasse2 = $request['classe2']; //$request['classe']
+        $matricule2 = $request['var2'];
 
-        $users = DB::table('eleves')
-            ->where('assurance', '=', $matricule)
+        if($request->view_type === 'download') {
+
+        $user = DB::table('eleves')
+            ->where('classe', '=', $laclasse)
+            ->orderBy('eleves.last_name', 'ASC')
+            ->first();
+         $view = View('users.report', ['user' => $user, 'parametres' => $parametres , 'laclasse' => $laclasse2]);
+            $pdf = \App::make('dompdf.wrapper');
+            $pdf->loadHTML($view->render());
+            return $pdf->stream();
+        /*    $pdf = PDF::loadView('users.report', ['user' => $user, 'parametres' => $parametres, 'laclasse' => $laclasse]);
+            return $pdf->stream();*/
+        } else {
+
+            $users = DB::table('eleves')
+            ->where('classe', '=', $laclasse2)
             ->orderBy('eleves.last_name', 'ASC')
             ->get();
 
-         
-        if($request->view_type === 'download') {
-            $pdf = PDF::loadView('users.report', ['users' => $users, 'parametres' => $parametres, 'laclasse' => $laclasse]);
-            return $pdf->download('users.pdf');
-        } else {
-            $view = View('users.report', ['users' => $users, 'parametres' => $parametres , 'laclasse' => $laclasse]);
+            $view = View('users.report2', ['users' => $users, 'parametres' => $parametres , 'laclasse' => $laclasse2]);
             $pdf = \App::make('dompdf.wrapper');
             $pdf->loadHTML($view->render());
             return $pdf->stream();
