@@ -18,6 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/sarr1', function () {
+    return view('sarr1');
+});
+
+Route::resource('classes', 'ClasseController');
+
 Route::get('/import_excel', 'ImportExcelController@index');
 Route::post('/import_excel/import', 'ImportExcelController@import');
 
@@ -29,6 +35,8 @@ Route::get('/envato-user-helper-demo', function () {
 
 Route::get('/users', 'UserController@index');
 Route::get('/users/report/{view_type}', 'UserController@report');
+Route::get('profile', 'UserController@profile');
+Route::post('profile', 'UserController@update_avatar');
 
 
 Route::get('qrcode-with-special-data', function() {
@@ -40,14 +48,16 @@ Route::get('qrcode', function () {
      return QrCode::size(300)->generate('A basic example of QR code!');
  });
 
-Route::get('/eleves', 'ElevesController@index');
-Route::get('/eleves/create', 'ElevesController@create');
-Route::get('/eleves/{id}', 'ElevesController@show');
+Route::resource('/eleve', 'EleveController');
+Route::get('eleves/voir', 'EleveController@voir');
 Route::post('eleves/certif', 'ElevesController@certif');
+Route::post('eleves/billetsortie', 'ElevesController@billetsortie');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::get('/dynamic_dependent', 'DynamicDependent@index');
 

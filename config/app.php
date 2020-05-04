@@ -180,6 +180,9 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         App\Providers\EnvatoServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+
+
 
     ],
 
@@ -236,6 +239,9 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'EnvatoUser' => App\Helpers\Envato\User::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+
+
 
     ],
 

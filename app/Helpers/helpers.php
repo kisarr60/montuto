@@ -27,7 +27,7 @@ function EleveImagePath($image_name)
 }
 
 function get_nombreEleves($classe) {
-        $nbEleves = DB::table('eleves')->where('classe', $classe)->count();
+        $nbEleves = DB::table('eleves')->where('classe_id', $classe)->count();
          
         return (isset($nbEleves) ? $nbEleves : '');
     }
@@ -35,7 +35,7 @@ function get_nombreEleves($classe) {
 function get_ElevesGarcon($classe) {
          
         $nbSexe = DB::table('eleves')
-        ->where('classe', $classe)
+        ->where('classe_id', $classe)
         ->where('sexe', 'M')
         ->count();
          	return $nbSexe . ($nbSexe>1 ? ' garçons' : ' garçon');
@@ -45,9 +45,11 @@ function get_ElevesGarcon($classe) {
 function get_ElevesFille($classe) {
          
         $nbSexe = DB::table('eleves')
-        ->where('classe', $classe)
+        ->where('classe_id', $classe)
         ->where('sexe', 'F')
         ->count();
          	return $nbSexe . ($nbSexe>1 ? ' filles' : ' fille');
 
          }
+
+

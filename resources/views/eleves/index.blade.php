@@ -15,11 +15,11 @@
 			@foreach($eleves as $eleve)
 				<tr>
 					<td>{{ $eleve->id }}</td>
-					<td>{{ $eleve->first_name }}</td>
-					<td>{{ $eleve->last_name }}</td>
-					<td>{{ $eleve->assurance }}</td>
-					<td>{{ $eleve->classe }}</td>
-					<td><a class="btn btn-info" href="/eleves/{{$eleve->id}}">Voir</a></td>
+					<td>{{ $eleve->prenoms }}</td>
+					<td>{{ $eleve->nom }}</td>
+					<td>{{ $eleve->matricule }}</td>
+					<td>{{ $eleve->classe->libClasse }}</td>
+					<td><a class="btn btn-info" href="/eleve/{{$eleve->id}}">Voir</a></td>
 				</tr>
 			@endforeach
 		</table>

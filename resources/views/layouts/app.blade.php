@@ -34,7 +34,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                                <a class="nav-link" href="{{ url('eleves') }}">{{ __('Eleves') }}</a>
+                                <a class="nav-link" href="{{ url('eleve') }}">{{ __('Eleve') }}</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ url('classes') }}">{{ __('Classes') }}</a>
                         </li>
                     </ul>
 
@@ -51,12 +54,16 @@
                                 </li>
                             @endif
                         @else
+                            
                             <li class="nav-item dropdown">
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img src="/uploads/avatars/{{ Auth::user()->avatar }}" style="width:32px; height:32px; top:10px; left:10px; border-radius:50%">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -75,7 +82,10 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                @include('includes.messages')
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>

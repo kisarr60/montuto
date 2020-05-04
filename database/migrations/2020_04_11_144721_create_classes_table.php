@@ -15,9 +15,13 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('local');
-            $table->integer('nbBancs');
+            $table->unsignedInteger('refClasse');
+            $table->string('libClasse');
+            $table->unsignedInteger('salle_id')->nullable();
+            $table->unsignedInteger('professeur_id')->nullable();
+            $table->unsignedInteger('surveillant_id')->nullable();
+            $table->unsignedInteger('responsable_id')->nullable();
+            $table->integer('nbBancs')->nullable();
             $table->timestamps();
         });
     }

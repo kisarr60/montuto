@@ -22,7 +22,14 @@ class CreateElevesTable extends Migration
             $table->enum('sexe', ['M','F']);
             $table->string('matricule')->unique();
             $table->unsignedInteger('classe_id');
+            $table->string('photo')->default('default.jpg');
+            $table->string('prenomspere')->nullable();
+            $table->string('prenomNomMere')->nullable();
+            $table->string('tuteur')->nullable();
+            $table->string('contact')->nullable();
+            $table->string('adresse')->nullable();
             $table->timestamps();
+
         });
     }
 
