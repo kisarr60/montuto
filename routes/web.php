@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('dropboxFileUpload', 'HomeController@dropboxFileUpload');
+
 Route::get('/sarr1', function () {
     return view('sarr1');
 });
@@ -62,3 +64,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dynamic_dependent', 'DynamicDependent@index');
 
 Route::post('dynamic_dependent/fetch', 'DynamicDependent@fetch')->name('dynamicdependent.fetch');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

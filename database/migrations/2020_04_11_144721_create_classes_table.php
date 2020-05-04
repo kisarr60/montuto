@@ -21,7 +21,6 @@ class CreateClassesTable extends Migration
             $table->unsignedInteger('professeur_id')->nullable();
             $table->unsignedInteger('surveillant_id')->nullable();
             $table->unsignedInteger('responsable_id')->nullable();
-            $table->integer('nbBancs')->nullable();
             $table->timestamps();
         });
     }
