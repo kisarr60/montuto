@@ -18,13 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dropboxFileUpload', 'HomeController@dropboxFileUpload');
+Route::get('pdfprofs', 'AgentController@pdfprofs');
 
 Route::get('/sarr1', function () {
     return view('sarr1');
 });
 
 Route::resource('classes', 'ClasseController');
+Route::resource('agents', 'AgentController');
 
 Route::get('/import_excel', 'ImportExcelController@index');
 Route::post('/import_excel/import', 'ImportExcelController@import');

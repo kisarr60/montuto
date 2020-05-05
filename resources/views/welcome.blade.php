@@ -80,20 +80,20 @@
             @endif
 
             <div class="content">
+                <img src="/images/men1.png">
                 <div class="title m-b-md">
-                    Laravel
+                    Kis@rr
                 </div>
+                <img src="/images/men2.jpg">
+                <h2>Gestion du collège</h2>
 
                 <div class="links">
-                    <a href="/classes/">classes</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="/classes/">Les classes</a>
+                    <a href="/eleve">Les élèves</a>
+                    <a href="/agents">Les professeurs</a><br><br>
+                    
                 </div>
+                <img width="25%" src="/images/ibousarr.png">
             </div>
         </div>
     </body>

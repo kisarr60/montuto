@@ -34,10 +34,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                                <a class="nav-link" href="{{ url('eleve') }}">{{ __('Eleve') }}</a>
+                                <a class="nav-link" href="{{ url('classes') }}">{{ __('Classes') }}</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" href="{{ url('classes') }}">{{ __('Classes') }}</a>
+                                <a class="nav-link" href="{{ url('eleve') }}">{{ __('Eleves') }}</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ url('agents') }}">{{ __('Professeurs') }}</a>
                         </li>
                     </ul>
 
