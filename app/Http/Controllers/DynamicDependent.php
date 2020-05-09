@@ -11,19 +11,20 @@ class DynamicDependent extends Controller
 {
     function index()
     {
-     $country_list = DB::table('country_state_city')
-        ->select('country')
-        ->groupBy('country')
+     $country_list = DB::table('salles')
+        ->select('local')
+        ->groupBy('local')
         ->get();
      return view('dynamic_dependent')->with('country_list', $country_list);
     }
 
     function fetch(Request $request)
     {
+        dd($request);
      $select = $request->get('select');
      $value = $request->get('value');
      $dependent = $request->get('dependent');
-     $data = DB::table('country_state_city')
+     $data = DB::table('salles')
        ->where($select, $value)
        ->groupBy($dependent)
        ->get();

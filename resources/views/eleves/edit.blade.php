@@ -1,108 +1,160 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="container">
-	
-		    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">Modification d'un élève</p>
-        </header>
-        <div class="card-content">
-            <div class="content">
-                <form action="{{ route('eleve.update', $eleve->id) }}" method="POST">
-                    @csrf
-                    @method('put')
-                    <div class="field">
-                        <label class="label">Prénoms</label>
-                        <div class="control">
-                          <input class="input @error('prenoms') is-danger @enderror" type="text" name="prenoms" value="{{ old('prenoms', $eleve->prenoms) }}" placeholder="Titre du film">
+<div class="container">
+    <div class="card">
+        {!! Form::model($eleve, ['action' => ['EleveController@update', $eleve->id], 'method' => 'post', 'files' => true]) !!}
+        <div class="card-header bg-secondary text-white">
+            <div class="row">
+                <div class="col-4">
+                    <h1>Modification</h1>
+                </div>
+                <div class="col-4 text-right">
+                    <a href="{{ url('eleve') }}"><button class="btn btn-warning">Annuler</button></a>
+                </div> 
+                <div class="col-4">
+                    {{ Form::submit('Enregistrer', ['class' => 'text-left btn btn-primary']) }}
+                </div>
+                      
+            </div>
+              
+        </div>
+        <div class="card-body">
+        <div class="row">
+            <div class="col-5">
+                
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('prenoms', 'Prénoms') }}
                         </div>
-                        @error('title')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="field">
-                        <label class="label">Nom</label>
-                        <div class="control">
-                          <input class="input" type="text" name="nom" value="{{ old('nom', $eleve->nom)}}">
-                        </div>
-                        @error('nom')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="field">
-                        <label class="label">Date de naisssance</label>
-                        <div class="control">
-                            <input class="input" type="date" name="datnais" value="{{ old('datnais', $eleve->datnais)}}">
-                        </div>
-                        @error('datnais')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="field">
-                        <label class="label">Lieu de naissance</label>
-                        <div class="control">
-                          <input class="input" type="text" name="lieunais" value="{{ old('lieunais', $eleve->lieunais)}}">
-                        </div>
-                        @error('lieunais')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="field">
-                        <label class="label">Sexe</label>
-                        <div class="control">
-                          <input class="input" type="text" name="sexe" value="{{ old('sexe', $eleve->sexe)}}">
-                        </div>
-                        @error('sexe')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="field">
-                        <label class="label">matricule</label>
-                        <div class="control">
-                          <input class="input" type="text" name="matricule" value="{{ old('matricule', $eleve->matricule)}}">
-                        </div>
-                        @error('matricule')
-                            <p class="help is-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                          <button class="button is-link">Envoyer</button>
+                        <div class="col-md-8">
+                                {{ Form::text('prenoms', $eleve->prenoms, ['class' => 'form-control']) }}
                         </div>
                     </div>
-                </form>
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('nom', 'Nom') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::text('nom', $eleve->nom, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('datenais', 'Date de naissance') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::date('datnais', $eleve->datnais, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('lieunais', 'Lieu de naissance') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::text('lieunais', $eleve->lieunais, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('sexe', 'Sexe') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::select('sexe',['M'=>'Mascilin', 'F' =>'Féminin'], $eleve->sexe,['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('matricule', 'Matricule') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::text('matricule', $eleve->matricule, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('classe_id', 'Classe') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::select('classe_id', $classes, $eleve->classe_id, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('prenomPere', 'Prénoms du père') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::text('prenomPere', $eleve->prenomPere, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('prenomNomMere', 'Nom de la mère') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::text('prenomNomMere', $eleve->prenomNomMere, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('tuteur', 'Tuteur') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::text('tuteur', $eleve->tuteur, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('contact', 'Contact') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::text('contact', $eleve->contact, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('adresse', 'Adresse') }}
+                        </div>
+                        <div class="col-md-8">
+                                {{ Form::text('adresse', $eleve->adresse,['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <div class="col-md-4 text-right">
+                            {{ Form::label('photo', 'Modifier la photo') }}
+                        </div>
+                        <div class="col-md-8">
+                            {{Form::file('photo',['class' => 'form-group'],)}}
+                        </div>
+                    </div>
+            </div>
+            <div class="col-2">
+                <div class="text-center"><h2>Photo</h2></div>
+                <img src="/uploads/eleves/{{ $eleve->photo }}" style="width:140px; height:150px; top:10px; left:10px; border-radius:50%">
+            </div>
+        </div>
+            
+                
+            </div>
+            <div class="card-footer bg-secondary text-white">
+                <div class="form-group row">
+                        <div class="col-md-8 text-right">
+                            {{Form::hidden('_method', 'PUT')}}
+                        </div>
+                        <div class="col-md-2">
+                            
+                        </div>
+                        <div class="col-md-2">
+                                
+                        </div>
+                    </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
-
-	</div>
-
-
-	<div class="well">
- 
-    {!! Form::open(['url' => '', 'class' => 'form-horizontal']) !!}
- 
-    <fieldset>
- 
-        <legend>Legend</legend>
- 
-        <!-- Email -->
-        <div class="form-group">
-            {!! Form::label('email', 'Email:', ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                {!! Form::email('email', $value = null, ['class' => 'form-control', 'placeholder' => 'email']) !!}
-            </div>
-        </div>
-        <!-- Password -->
-        <div class="form-group">
-            {!! Form::label('password', 'Password:', ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                {!! Form::password('password',['class' => 'form-control', 'placeholder' => 'Password', 'type' => 'password']) !!}
-                <div class="checkbox">
-                    {!! Form::label('checkbox', 'Checkbox') !!}
-                    {!! Form::checkbox('checkbox') !!}
-                </div>
-            </div>
-        </div>
 @stop

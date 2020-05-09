@@ -2,8 +2,12 @@
 
 @section('content')
 	<div class="container">
-		<h2>Liste des élèves</h2>
-		<table class="table table-striped">
+		<div class="card">
+		<div class="card-header bg-secondary text-center text-white">
+			<h2>Liste des élèves</h2>
+		</div>
+		<div class="card-body">
+			<table class="table table-striped">
 			<tr>
 				<th>#</th>
 				<th>Prénoms</th>
@@ -12,9 +16,9 @@
 				<th>Classe</th>
 				<th>Action</th>
 			</tr>
-			@foreach($eleves as $eleve)
+			@foreach($eleves as $key => $eleve)
 				<tr>
-					<td>{{ $eleve->id }}</td>
+					<td>{{ $key + 1 }}</td>
 					<td>{{ $eleve->prenoms }}</td>
 					<td>{{ $eleve->nom }}</td>
 					<td>{{ $eleve->matricule }}</td>
@@ -23,6 +27,9 @@
 				</tr>
 			@endforeach
 		</table>
-		<div> {{$eleves->links()}} </div>
+		</div>
+		<div class="card-footer bg-secondary">
+			<div> {{$eleves->links()}} </div>
+		</div>
 	</div>
 @endsection

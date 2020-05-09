@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Eleve;
+use App\Classe;
+use Image;
 
 class EleveController extends Controller
 {
@@ -61,7 +63,7 @@ class EleveController extends Controller
      */
     public function show(Eleve $eleve)
     {
-        
+        //$classe = Classe::find($eleve->classe_id);
        //return dd($eleve);
        return view('eleves.show', compact('eleve'));
     }
@@ -74,9 +76,9 @@ class EleveController extends Controller
      */
     public function edit(Eleve $eleve)
     {
-        
+        $classes = Classe::pluck('libClasse','id');
        //return dd($eleve);
-       return view('eleves/edit', compact('eleve'));
+       return view('eleves/edit', compact('eleve', 'classes'));
     }
 
     /**
@@ -88,7 +90,55 @@ class EleveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'prenoms' =>  'required',
+            'nom' =>  'required'
+       ]);
+
+        $eleve = Eleve::find($id);
+
+        if($request->hasFile('photo')){
+            $photo = $request->file('photo');
+            $filename = time().'_'. $eleve->id.'_'. '.' . $photo->getClientOriginalExtension();
+            Image::make($photo)->resize(300, 300)->save( public_path('/uploads/eleves/' . $filename ) );
+        
+        $eleve->prenoms = $request->input('prenoms');
+        $eleve->nom = $request->input('nom');
+        $eleve->datnais = $request->input('datnais');
+        $eleve->lieunais = $request->input('lieunais');
+        $eleve->matricule = $request->input('matricule');
+        $eleve->classe_id = $request->input('classe_id');
+        $eleve->prenomPere = $request->input('prenomPere');
+        $eleve->prenomNomMere = $request->input('prenomNomMere');
+        $eleve->tuteur = $request->input('tuteur');
+        $eleve->contact = $request->input('contact');
+        $eleve->adresse = $request->input('adresse');
+        $eleve->photo = $filename;
+        $eleve->save();
+        }
+        $eleve->prenoms = $request->input('prenoms');
+        $eleve->nom = $request->input('nom');
+        $eleve->datnais = $request->input('datnais');
+        $eleve->lieunais = $request->input('lieunais');
+        $eleve->matricule = $request->input('matricule');
+        $eleve->classe_id = $request->input('classe_id');
+        $eleve->prenomPere = $request->input('prenomPere');
+        $eleve->prenomNomMere = $request->input('prenomNomMere');
+        $eleve->tuteur = $request->input('tuteur');
+        $eleve->contact = $request->input('contact');
+        $eleve->adresse = $request->input('adresse');
+        
+        $eleve->save();
+
+
+        return redirect('/eleve')->with('success', 'Données de  <span class="badge badge-secondary badge-pill">'. $eleve->prenoms . ' ' . $eleve->nom .'</span> ont été mises à jour avec succès.');
+    
+    
+    
+    
+    
+
     }
 
     /**
@@ -100,5 +150,15 @@ class EleveController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function export()
+    {
+        return 'Export';
+    }
+
+    public function import()
+    {
+        return 'import';
     }
 }

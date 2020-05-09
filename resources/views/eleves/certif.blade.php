@@ -89,7 +89,7 @@
 <div class="clearfix">
   <div class="box" style="background-color:#fff">
   <p>Fait à Bignona le <?php echo date('d-m-Y'); ?></p>
- <img style="width: 30%" src="{{ public_path('/images/eleves/'). $user->photo }}"alt="123">
+ 
   </div>
   <div class="box" style="background-color:#fff; text-align: center; margin-left: 50px;">
   <p>Le Principal</p><br>

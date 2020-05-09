@@ -44,7 +44,7 @@
 									{!!Form::open(['action' => ['ClasseController@destroy', $classe->id], 'method' => 'post', 'class' => 'pull-right'])  !!}
 
 										{{Form::hidden('_method', 'DELETE')}}
-										{{ Form::submit('Sup', ['class' => 'btn btn-danger']) }}
+										{{ Form::submit('Sup', ['class' => 'btn btn-danger', 'id' => 'demoSwal']) }}
 
 									{!! Form::close() !!}
 									</div>

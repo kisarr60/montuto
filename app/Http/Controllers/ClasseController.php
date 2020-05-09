@@ -89,10 +89,15 @@ class ClasseController extends Controller
     {
 
         $classe = Classe::find($id);
-//dd($classe);
-        $respons = Eleve::where('id',$classe->responsable_id)
-                            ->first();
+      
+        $r = Eleve::where('id', $classe->responsable_id)->first();
+        if(is_null($r)) {
+            $respons = ['prenoms' => 'Aucun', 'nom' => 'resposable']; 
+        }else{
+            $respons = $r;
+        }
         
+       //dd($respons);
         $surv = DB::table('personnel')->find($classe->surveillant_id);
         $profprinc = DB::table('personnel')->find($classe->professeur_id);
         $salle = Salle::find($classe->salle_id);
@@ -170,11 +175,13 @@ class ClasseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+
         $classe = Classe::find($id);
         $classe->delete();
 
         return redirect('/classes')->with('success', 'La classe n° <span class="badge badge-secondary badge-pill">'. $classe->id .'</span> a été supprimée avec succès.');
+        
     }
     
 }

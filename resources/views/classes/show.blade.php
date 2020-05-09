@@ -20,7 +20,13 @@
 				  </div>
 				  <div class="card bg-success">
 				    <div class="card-body text-center">
-				      <p class="card-text"><h3>Responsable de classe<br>{{$respons->prenoms}} {{$respons->nom}} </h3></p>
+				      <p class="card-text"><h3>Responsable de classe<br>
+				      	@if(is_null($respons))
+				      	'Pas de responsable'
+				      	@else
+				      	{{$respons['prenoms']}} {{$respons['nom']}}
+				      	@endif
+				      </h3></p>
 				    </div>
 				  </div>
 			</div>

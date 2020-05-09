@@ -14,22 +14,22 @@ use Illuminate\Support\Facades\Request;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('pdfprofs', 'AgentController@pdfprofs');
 
-Route::get('/sarr1', function () {
-    return view('sarr1');
-});
-
 Route::resource('classes', 'ClasseController');
 Route::resource('agents', 'AgentController');
+Route::post('/pdf', 'AgentController@pdf');
 
 Route::get('/import_excel', 'ImportExcelController@index');
-Route::post('/import_excel/import', 'ImportExcelController@import');
-
+Route::post('/import_excel', 'ImportExcelController@import');
+Route::get('/import_excel/export', 'ImportExcelController@export');
+Route::get('/export', 'EleveController@export')->name('export');
+Route::post('/import', 'EleveController@export')->name('import');
 Route::get('/sarr', 'RandomController@sarr');
 
 Route::get('/envato-user-helper-demo', function () {

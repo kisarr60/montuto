@@ -15,7 +15,7 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('refClasse');
+            $table->unsignedInteger('refClasse')->unique();
             $table->string('libClasse');
             $table->unsignedInteger('salle_id')->nullable();
             $table->unsignedInteger('professeur_id')->nullable();

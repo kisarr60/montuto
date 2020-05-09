@@ -1,28 +1,6 @@
-
-<!DOCTYPE html>
-<html>
- <head>
-  <title>Import Excel File in Laravel</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- </head>
- <body>
-  <br />
-  
+@extends('layouts.master')
+@section('content')
   <div class="container">
-   <h3 align="center">Import Excel File in Laravel</h3>
-    <br />
-   @if(count($errors) > 0)
-    <div class="alert alert-danger">
-     Upload Validation Error<br><br>
-     <ul>
-      @foreach($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-     </ul>
-    </div>
-   @endif
 
    @if($message = Session::get('success'))
    <div class="alert alert-success alert-block">
@@ -30,12 +8,19 @@
            <strong>{{ $message }}</strong>
    </div>
    @endif
-   <form method="post" enctype="multipart/form-data" action="{{ url('/import_excel/import') }}">
+   <br />
+   <div class="panel panel-default">
+      <div class="row">
+          <div class="col-3">
+              <a href="{{ url('/import_excel/export')}}" class="btn btn-info">Export to XLSX</a>
+          </div>
+          <div class="col-9">
+              <form method="post" enctype="multipart/form-data" action="{{ url('/import_excel') }}">
     {{ csrf_field() }}
     <div class="form-group">
      <table class="table">
       <tr>
-       <td width="40%" align="right"><label>Select File for Upload</label></td>
+       <td width="40%" align="right"><label>Choisir un fichier Excel à télécharger</label></td>
        <td width="30">
         <input type="file" name="select_file" />
        </td>
@@ -45,15 +30,16 @@
       </tr>
       <tr>
        <td width="40%" align="right"></td>
-       <td width="30"><span class="text-muted">.xls, .xslx</span></td>
+       <td width="30"><span class="text-muted">fichiers autorisés : .xls, .xslx</span></td>
        <td width="30%" align="left"></td>
       </tr>
      </table>
     </div>
    </form>
-   
-   <br />
-   <div class="panel panel-default">
+          </div>
+      </div>
+      </div>
+    <div>
     <div class="text-center"> {{ $data->links() }} </div>
     <div class="panel-heading">
      <h3 class="panel-title">Customer Data</h3>
@@ -62,29 +48,26 @@
      <div class="table-responsive">
       <table class="table table-bordered table-striped">
        <tr>
-        <th>Customer Name</th>
-        <th>Gender</th>
-        <th>Address</th>
-        <th>City</th>
-        <th>Postal Code</th>
-        <th>Country</th>
+        <th>PRENOMS</th>
+        <th>NOM</th>
+        <th>NE</th>
+        <th>A</th>
+        <th>SEXE</th>
+        <th>MATRICULE</th>
        </tr>
        @foreach($data as $row)
        <tr>
-        <td>{{ $row->CustomerName }}</td>
-        <td>{{ $row->Gender }}</td>
-        <td>{{ $row->Address }}</td>
-        <td>{{ $row->City }}</td>
-        <td>{{ $row->PostalCode }}</td>
-        <td>{{ $row->Country }}</td>
+        <td>{{ $row->prenoms }}</td>
+        <td>{{ $row->nom }}</td>
+        <td>{{ $row->datnais }}</td>
+        <td>{{ $row->lieunais }}</td>
+        <td>{{ $row->sexe }}</td>
+        <td>{{ $row->matricule }}</td>
        </tr>
        @endforeach
       </table>
-
      </div>
     </div>
    </div>
   </div>
- </body>
-</html>
-
+ @stop
