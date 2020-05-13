@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/lescandidats', 'CandidatController@index');
+Route::get('/lescandidats/export', 'CandidatController@export');
+Route::post('/lescandidats', 'CandidatController@import');
+Route::post('/lescandidats', 'CandidatController@maj_candidats');
+
+
 Route::get('pdfprofs', 'AgentController@pdfprofs');
 
 Route::resource('classes', 'ClasseController');
@@ -27,6 +33,8 @@ Route::post('/pdf', 'AgentController@pdf');
 
 Route::get('/import_excel', 'ImportExcelController@index');
 Route::post('/import_excel', 'ImportExcelController@import');
+Route::post('/maj_excel', 'ImportExcelController@miseAjour');
+
 Route::get('/import_excel/export', 'ImportExcelController@export');
 Route::get('/export', 'EleveController@export')->name('export');
 Route::post('/import', 'EleveController@export')->name('import');
@@ -53,6 +61,7 @@ Route::get('qrcode', function () {
 
 Route::resource('/eleve', 'EleveController');
 Route::get('eleves/voir', 'EleveController@voir');
+Route::get('candidats', 'EleveController@pdfeleves');
 Route::post('eleves/certif', 'ElevesController@certif');
 Route::post('eleves/billetsortie', 'ElevesController@billetsortie');
 

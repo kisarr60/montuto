@@ -91,6 +91,8 @@
                     <a href="/classes/">Les classes</a>
                     <a href="/eleve">Les élèves</a>
                     <a href="/agents">Les professeurs</a><br><br>
+                    <a href="/import_excel">Les imports et exports</a><br><br>
+                    
                     
                 </div>
                 <img width="25%" src="/images/ibousarr.png">

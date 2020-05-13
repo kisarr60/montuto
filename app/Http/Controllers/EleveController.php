@@ -3,12 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use App\Parametre;
 use App\Eleve;
 use App\Classe;
 use Image;
 
 class EleveController extends Controller
 {
+    public function pdfeleves(Request $request)
+    {
+
+        $parametres = Parametre::where('id', 1)->first();
+
+        $profs = DB::table('liste3')
+            ->orderBy('Prenom', 'ASC')
+            ->orderBy('Nom', 'ASC')
+            ->get();
+         $view = View('eleves.infocandidats', ['profs' => $profs, 'parametres' => $parametres]);
+            $pdf = \App::make('dompdf.wrapper');
+            $pdf->loadHTML($view->render());
+            return $pdf->stream(); 
+    }
 
     public function voir(Request $request)
     {
