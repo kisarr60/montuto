@@ -29,7 +29,7 @@ class EleveController extends Controller
     public function voir(Request $request)
     {
         $eleves = Eleve::where('classe_id', $request['classe'])
-            ->paginate(25);
+            ->paginate(200);
         return view('eleves.index', compact('eleves'));
     }
 

@@ -60,7 +60,7 @@ Route::get('qrcode', function () {
  });
 
 Route::resource('/eleve', 'EleveController');
-Route::get('eleves/voir', 'EleveController@voir');
+Route::get('classes/voir', 'EleveController@voir')->name('eleves-classe');
 Route::get('candidats', 'EleveController@pdfeleves');
 Route::post('eleves/certif', 'ElevesController@certif');
 Route::post('eleves/billetsortie', 'ElevesController@billetsortie');
