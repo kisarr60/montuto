@@ -87,6 +87,15 @@
                 <th style="border-bottom: solid 1px;text-align: left;">Corps et Grade</th>
                 <td style="border-bottom: solid 1px;">{{ $prof->corps }} {{ $prof->grade }}</td>
             </tr>
+             <tr class="certif">
+             
+                <td style="border-bottom: solid 1px;text-align: left;">Référence de l'ordre de service</td>
+                <td style="border-bottom: solid 1px;"> {{$profs->refOS}} </td>
+            </tr>
+            <tr class="certif">
+                <td style="border-bottom: solid 1px;text-align: left;">Date de prise de service</td>
+                <td style="border-bottom: solid 1px;">{{ $prof->datPS }}</td>
+            </tr>
             <tr class="certif">
              
                 <th style="text-align: left;">Numéro C.N.I</th>

@@ -17,6 +17,7 @@ class AgentController extends Controller
     public function index()
     {
         $profs = Agent::paginate(5);
+       //dd($profs);
        
         return view('agents.index')->with('profs', $profs);
     }
@@ -74,7 +75,9 @@ class AgentController extends Controller
      */
     public function update(Request $request, Agent $agent)
     {
-        //
+        dd($request);/*
+         Agent::update()->where('id', $agent);
+         return view('agents.show', compact('agent'));*/
     }
 
     /**
@@ -94,7 +97,7 @@ class AgentController extends Controller
 
         $parametres = Parametre::where('id', 1)->first();
 
-        $profs = DB::table('mesagents')
+        $profs = DB::table('agents')
             ->orderBy('discipline', 'ASC')
             ->orderBy('nom', 'ASC')
             ->orderBy('prenoms', 'ASC')

@@ -5,7 +5,7 @@
 		<div class="card">
 			<div class="card-header bg-secondary">
 			<div class="row">
-				<div class="col-md-3"><h4 class="text-white" >Liste des professeurs</h4></div>
+				<div class="col-md-3"><h4 class="text-white" >Listes des professeurs</h4></div>
 				<div class="col-md-3"><a class="btn btn-primary float-right" href="pdfprofs" target="_BLANK">Liste des profs</a></div>
 				<div class="col-md-3"><a class="btn btn-primary float-right" href=" {{ url('/documents/AUTORISATION ABSENCE.pdf')}} " target="_BLANK">Formulaire absence</a></div>
 				<div class="col-md-3"><a class="btn btn-primary float-right" href="agents/create">Ajouter un prof</a></div>
