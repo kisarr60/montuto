@@ -18,7 +18,7 @@ function productImagePath($image_name)
 
 }
 
-function EleveImagePath($image_name)
+function eleveImagePath($image_name)
 
 {
 
